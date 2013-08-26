@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/gewo/locus.png)](https://travis-ci.org/gewo/locus/)
 [![Code Coverage](https://coveralls.io/repos/gewo/locus/badge.png)](https://coveralls.io/r/gewo/locus)
+[![Code Climate](https://codeclimate.com/github/gewo/locus.png)](https://codeclimate.com/github/gewo/locus)
+[![Gem Version](https://badge.fury.io/rb/locus.png)](http://badge.fury.io/rb/locus)
+[![Dependency Status](https://gemnasium.com/gewo/locus.png)](https://gemnasium.com/gewo/locus)
 
 Get information about postal codes.
 
