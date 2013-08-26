@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = 'The gem uses the downloadable geonames.org database for retrieving additional information about postal codes'
   gem.summary       = 'Information about postal codes'
   gem.homepage      = 'https://github.com/gewo/locus/'
+  gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
