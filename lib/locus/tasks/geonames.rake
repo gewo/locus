@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'yaml'
 
 namespace :locus do
@@ -14,7 +13,11 @@ namespace :locus do
           codes = IO.readlines(file).map do |line|
             line = line.split("\t")
             country ||= line[0].downcase.to_sym
-            { line[1] => line[4] }
+            # { zip_code => { state_code: line[4], state_name: line[3]
+            { line[1] => {
+              state_code: line[4],
+              state_name: line[3]
+            } }
           end.reduce(:merge)
           { country => codes }
         end.reduce(:merge)
