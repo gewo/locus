@@ -8,7 +8,8 @@
 
 Get information about postal codes.
 
-Currently only 'admin code1' is looked up (1. order subdivision (state)).
+Currently only 'admin code1' and 'admin name1' are looked up (1. order
+subdivision (state)).
 
 Uses data files from [geonames.org](http://geonames.org/).
 
@@ -29,7 +30,7 @@ Locus::Place.find_by_postal_code('12053', :de).state_code  # => 'BE'
 ```
 
 A data file for DE, CH and AT is included with the gem. To update your
-data file: 
+data file:
 
 ```bash
 wget http://download.geonames.org/export/zip/{DE,AT,CH}.zip
@@ -43,10 +44,13 @@ Tell the gem to use your updated data file:
 Locus.zip_path = '/path/to/updated/postal_codes.yml'
 ```
 
+## Changes
+
+### 0.2.x
+
+* format of data file changed. Use the new provided file or update yours
+  using the rake task
+
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Awesome :-)
