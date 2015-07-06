@@ -27,6 +27,10 @@ module Locus
         it 'state_code eq "BE"' do
           expect(subject.state_code).to eq 'BE'
         end
+
+        it 'state_name eq "Berlin"' do
+          expect(subject.state_name).to eq 'Berlin'
+        end
       end
 
       context 'default_country' do
