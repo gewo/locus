@@ -15,20 +15,32 @@ module Locus
       context 'given valid input' do
         subject { Place.find_by_postal_code('12053', :de) }
         it { should be_a Place }
-        its(:country) { should == :de }
-        its(:postal_code) { should == '12053' }
-        its(:state_code) { should == 'BE' }
+
+        it 'country eq :de' do
+          expect(subject.country).to eq :de
+        end
+
+        it 'postal_code eq "12053"' do
+          expect(subject.postal_code).to eq '12053'
+        end
+
+        it 'state_code eq "BE"' do
+          expect(subject.state_code).to eq 'BE'
+        end
       end
 
       context 'default_country' do
         subject { Place.find_by_postal_code('12053') }
-        its(:country) { should == :de }
+
+        it 'country eq :de' do
+          expect(subject.country).to eq :de
+        end
 
         context 'when changed' do
           before { Locus.default_country = :ch }
           after { Locus.default_country = :de }
           it { should be_nil }
-          it { Place.find_by_postal_code('4243').state_code.should == 'BL' }
+          it { expect(Place.find_by_postal_code('4243').state_code).to eq 'BL' }
         end
       end
     end

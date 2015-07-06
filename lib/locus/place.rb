@@ -1,12 +1,10 @@
-# coding: utf-8
-
 module Locus
   class Place
     attr_accessor :country, :postal_code, :state_code
 
     def initialize(attributes = {})
       attributes.each do |key, value|
-        send("#{key}=", value)
+        public_send("#{key}=", value)
       end
     end
 
@@ -33,7 +31,10 @@ module Locus
       # @return [String] The state code or nil.
       def self.state_code(postal_code, country)
         return nil unless country = places[country]
-        country[postal_code]
+        data = country[postal_code]
+        if data
+          data[:state_code]
+        end
       end
 
       def self.places
