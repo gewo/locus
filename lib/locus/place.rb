@@ -1,12 +1,10 @@
-# coding: utf-8
-
 module Locus
   class Place
-    attr_accessor :country, :postal_code, :state_code
+    attr_accessor :country, :postal_code, :state_code, :state_name
 
     def initialize(attributes = {})
       attributes.each do |key, value|
-        send("#{key}=", value)
+        public_send("#{key}=", value)
       end
     end
 
@@ -20,18 +18,21 @@ module Locus
     #
     # @return [Place] The {Place} or nil.
     def self.find_by_postal_code(postal_code, country = Locus.default_country)
-      return nil unless state_code = state_code(postal_code, country)
-      self.new(country: country,
-               postal_code: postal_code,
-               state_code: state_code)
+      return nil unless data = data(postal_code, country)
+      new(
+        country: country,
+        postal_code: postal_code,
+        state_code: data[:state_code],
+        state_name: data[:state_name]
+      )
     end
 
     private
 
-      # Get the state code for a given postal code and country.
+      # Get the place data for a given postal code and country.
       #
-      # @return [String] The state code or nil.
-      def self.state_code(postal_code, country)
+      # @return [Hash] place data or nil. Same format as in yaml file.
+      def self.data(postal_code, country)
         return nil unless country = places[country]
         country[postal_code]
       end
